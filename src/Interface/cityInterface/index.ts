@@ -1,7 +1,7 @@
 export interface Icity {
     _id?: string,
     name: string,
-    countryId: string,
+    stateId: string,
     active: boolean,
     createAt: number
 }
