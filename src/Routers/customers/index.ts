@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 
 const customerRouters = Router()
 
@@ -8,12 +8,12 @@ const customerRouters = Router()
 // Remover cliente
 // Alterar o nome do cliente
 
-customerRouters.get('/customer', ()=>{})
-customerRouters.get('/customer/:id', ()=>{})
-customerRouters.get('/customer/:name', ()=>{})
-customerRouters.post('/customer', ()=>{})
-customerRouters.patch('/customer', ()=>{})
-customerRouters.delete('/customer/:id', ()=>{})
+customerRouters.get('/customer', () => { })
+customerRouters.get('/customer/:id', () => { })
+customerRouters.get('/customer/:name', () => { })
+customerRouters.post('/customer', () => { })
+customerRouters.patch('/customer', () => { })
+customerRouters.delete('/customer/:id', () => { })
 
 
 

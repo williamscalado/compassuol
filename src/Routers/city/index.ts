@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { testeError } from "../../Controllers/teste";
 
 const cityRouters = Router()
 
@@ -6,7 +7,7 @@ const cityRouters = Router()
 // Consultar cidade pelo nome
 // Consultar cidade pelo estado
 // remover cidade
-cityRouters.get('/city', () => { })
+cityRouters.get('/city', testeError)
 cityRouters.get('/city/:name', () => { })
 cityRouters.get('/city/:id', () => { })
 cityRouters.get('/city/state/:id', () => { })
