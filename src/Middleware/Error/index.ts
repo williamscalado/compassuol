@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response} from 'express'
-import { setAppError } from '../../Error'
+import { setAppError } from '../../modules/Error';
 
 export const errorMiddleware = (error: setAppError, req: Request, res: Response, next: NextFunction)=>{
     

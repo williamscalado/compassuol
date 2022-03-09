@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { testeError } from "../../Controllers/teste";
+import { testeError } from "../../Controller/teste";
+
 
 const cityRouters = Router()
 

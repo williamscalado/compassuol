@@ -1,4 +1,5 @@
-import { setAppError } from "../../Error"
+import { setAppError } from "../../modules/Error"
+
 
 export const testeError = () =>{
 
