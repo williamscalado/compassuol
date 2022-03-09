@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { testeError } from "../../Controller/teste";
+import { cityController } from "../../Controller/cityController";
 
 
 const cityRouters = Router()
@@ -8,11 +8,11 @@ const cityRouters = Router()
 // Consultar cidade pelo nome
 // Consultar cidade pelo estado
 // remover cidade
-cityRouters.get('/city', testeError)
-cityRouters.get('/city/:name', () => { })
+cityRouters.get('/city', () => { })
+cityRouters.get('/city/:name', cityController.findByName)
 cityRouters.get('/city/:id', () => { })
 cityRouters.get('/city/state/:id', () => { })
-cityRouters.post('/city', () => { })
+cityRouters.post('/city', cityController.createCity)
 cityRouters.delete('/city', () => { })
 cityRouters.patch('/city', () => { })
 
