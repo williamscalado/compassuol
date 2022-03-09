@@ -26,7 +26,8 @@ const createCity = async (req: Request, res: Response) => {
 
     } catch (error) {
         res.status(400).json({
-            error: error
+            error: true,
+            message: error
         })
     }
 }
@@ -35,14 +36,19 @@ const findByName = async (req: Request, res: Response) => {
         
         try {
         
-        const name = req.params.name
-        if(name=="" || null || undefined ) throw 'Name invalid'
-        const nameCity = await cityUseCase.findByName(name)
-        res.status(200).json(nameCity)
+        const nameCity = req.params.name
+
+        if(nameCity=="" || null || undefined ) throw 'Name invalid'
+        const  resultSeachrCity = await cityUseCase.findByName(nameCity)
+
+        if(!resultSeachrCity.name) throw 'This city not exist!'
+        res.status(200).json(resultSeachrCity)
 
         } catch (error) {
             
-        res.status(300).json()
+        res.status(300).json({
+            error:true,
+            message: error})
             
         } 
 

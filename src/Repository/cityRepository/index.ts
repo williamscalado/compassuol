@@ -1,11 +1,12 @@
+import { query } from "express";
 import { ICity } from "../../Interface/cityInterface"
 import { citySchemaRepository } from "./schema"
 
 
-const createCity = async (data:ICity) => {
-   
+const createCity = async (data: ICity) => {
+
     try {
-        
+
         await citySchemaRepository.create(data);
 
     } catch (error) {
@@ -14,16 +15,16 @@ const createCity = async (data:ICity) => {
     }
 }
 
-const findByName = async (name: string) =>{
+const findByName = async (name: string, idStade?: string) => {
 
-    return citySchemaRepository.findOne({name: name}).exec()
+  return await citySchemaRepository.findOne({ name: name, stateId: (idStade) ? idStade : /.*/ })
 
 }
 
 
 
-export const cityRepository=  { 
+export const cityRepository = {
     createCity,
     findByName
- } 
+}
 

@@ -10,27 +10,37 @@ const createCity = async (data: ICity) => {
 
     try {
         // verificar se o nome já existe
-        const { name } = data
-        const nameCityAlreadyExist = await cityRepository.findByName(name)
+        // colcoar tudo menusculo
+        // mesma cidade em estados diferentes pode
+
+        const { name , stateId } = data
+        const nameCityAlreadyExist = await cityRepository.findByName(name.toLowerCase(), stateId)
+                
         if(nameCityAlreadyExist) throw 'This City name already exist!'
+       
+        data.name = data.name.toLowerCase()
 
         await cityRepository.createCity(data)
 
 
     } catch (error) {
-
+        throw error
     }
 
 
 }
 
-const findByName = async (name: string) =>{
+const findByName = async (nameCity: string) =>{
 
     try {
 
-        if(!name) throw new Error('This name is not valid!')
-        const nameCity = await cityRepository.findByName(name)
-        return nameCity
+        if(!nameCity) throw new Error('This name is not valid!')
+        const result = await cityRepository.findByName(nameCity.toLowerCase())
+        const resultCity = {
+            name: result?.name,
+            stateId: result?.stateId
+        }
+        return resultCity
 
     } catch (error) {
 
