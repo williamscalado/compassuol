@@ -1,7 +1,7 @@
 import express , { NextFunction, Request, Response} from 'express'
 import dotenv from  'dotenv'
 import { cityRouters } from './Routers/city';
-import { customerRouters } from './Routers/customers';
+import { clientRouters } from './Routers/client';
 import { errorMiddleware } from './Middleware/Error';
 import { connectMongoDb } from './Config/mongoDB';
 import { statesRouters } from './Routers/states';
@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use(statesRouters)
 app.use(cityRouters)
-app.use(customerRouters)
+app.use(clientRouters)
 
 
 

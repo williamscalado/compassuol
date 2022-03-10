@@ -1,10 +1,14 @@
-export interface Icustomer{
+import { string } from "yup"
+
+export interface IClient{
     _id?: string,
     name: string,
     lastName: string,
     gender: string,
     birthdayDate: number,
-    age: string,
+    email: string,
+    password: string,
+    age?: string,
     idCity: string,
     createAt?: number
 }
