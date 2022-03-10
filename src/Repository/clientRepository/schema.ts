@@ -3,11 +3,20 @@ import { Schema } from "mongoose"
 import { IClient } from "../../Interface/clientInterface";
 
 const clientSchema= new Schema<IClient>({
-    name: String,
-    lastName: String,
+    name: {
+        type: String,
+        lowercase: true
+    },
+    lastName: {
+        type: String,
+        lowercase: true
+    },
     gender: String,
     birthdayDate: Date,
-    email: String,
+    email: {
+        type: String,
+        lowercase: true
+    },
     password: String,
     age: String,
     idCity: String,

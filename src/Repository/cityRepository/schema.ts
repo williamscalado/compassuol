@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
+import { string } from "yup";
 import { ICity } from "../../Interface/cityInterface";
 
 
 const citySchema = new Schema<ICity>({
-    name: String,
+    name: {
+        type: String,
+        lowercase: true
+    },
     stateId: String,
     active: Boolean,
     createAt: Number
