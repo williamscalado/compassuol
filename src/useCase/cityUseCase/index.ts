@@ -1,5 +1,6 @@
 import { ICity } from "../../Interface/cityInterface";
 import { cityRepository } from "../../Repository/cityRepository";
+import { stateRepository } from "../../Repository/statesRepository";
 
 // Cadastrar cidade
 // Consultar cidade pelo nome
@@ -12,14 +13,17 @@ const createCity = async (data: ICity) => {
         // verificar se o nome já existe
         // colcoar tudo menusculo
         // mesma cidade em estados diferentes pode
+        // verifica se o estado existe
 
         const { name , stateId } = data
+        
+        const stateAlreadyExist = stateRepository.findByID(parseInt(stateId))
+        if(!stateAlreadyExist.id) throw 'This State ID not exist!'
+
         const nameCityAlreadyExist = await cityRepository.findByName(name.toLowerCase(), stateId)
-                
         if(nameCityAlreadyExist) throw 'This City name already exist!'
        
         data.name = data.name.toLowerCase()
-
         await cityRepository.createCity(data)
 
 
@@ -36,15 +40,15 @@ const findByName = async (nameCity: string) =>{
 
         if(!nameCity) throw new Error('This name is not valid!')
         const result = await cityRepository.findByName(nameCity.toLowerCase())
-        const resultCity = {
+        return {
             name: result?.name,
             stateId: result?.stateId
         }
-        return resultCity
+       
 
     } catch (error) {
 
-        throw new Error()
+        throw error
         
     }
 }

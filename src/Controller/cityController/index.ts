@@ -1,5 +1,4 @@
 import { Request, response, Response } from "express";
-import { date } from "yup";
 import { ICity } from "../../Interface/cityInterface";
 import { cityValidationData } from "../../modules/Validation/cityValidation";
 import { cityUseCase } from "../../useCase/cityUseCase";
@@ -8,20 +7,21 @@ import { cityUseCase } from "../../useCase/cityUseCase";
 const createCity = async (req: Request, res: Response) => {
 
     try {
-        const dataRequest = req.body
-        let data:ICity = {
+        const dataRequest: ICity = req.body
+        let data: ICity = {
             ...dataRequest,
             createAt: new Date().getTime(),
             active: true
         }
 
-        if(!data) throw new Error('Data is not valid!')        
-        await cityValidationData.validate(data)
+        if (!data) throw new Error('Data is not valid!')
 
+        await cityValidationData.validate(data)
         await cityUseCase.createCity(data)
+
         res.status(200).json({
             Sucess: true,
-            message: "City create!" 
+            message: "City create!"
         })
 
     } catch (error) {
@@ -33,24 +33,25 @@ const createCity = async (req: Request, res: Response) => {
 }
 
 const findByName = async (req: Request, res: Response) => {
-        
-        try {
-        
+
+    try {
+
         const nameCity = req.params.name
 
-        if(nameCity=="" || null || undefined ) throw 'Name invalid'
-        const  resultSeachrCity = await cityUseCase.findByName(nameCity)
+        if (nameCity == "" || null || undefined) throw 'Name invalid'
+        const resultSeachrCity = await cityUseCase.findByName(nameCity)
 
-        if(!resultSeachrCity.name) throw 'This city not exist!'
+        if (!resultSeachrCity.name) throw 'This city not exist!'
         res.status(200).json(resultSeachrCity)
 
-        } catch (error) {
-            
+    } catch (error) {
+
         res.status(300).json({
-            error:true,
-            message: error})
-            
-        } 
+            error: true,
+            message: error
+        })
+
+    }
 
 
 }
