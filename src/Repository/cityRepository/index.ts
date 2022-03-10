@@ -21,10 +21,18 @@ const findByName = async (name: string, idStade?: string) => {
 
 }
 
+const findByCityByStates = async (idStade: string) => {
+
+
+return await citySchemaRepository.find({stateId: idStade}, ['-__v', '-createAt', '-active'])
+
+
+}
 
 
 export const cityRepository = {
     createCity,
-    findByName
+    findByName,
+    findByCityByStates
 }
 

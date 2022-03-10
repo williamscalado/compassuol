@@ -41,6 +41,7 @@ const findByName = async (nameCity: string) =>{
         if(!nameCity) throw new Error('This name is not valid!')
         const result = await cityRepository.findByName(nameCity.toLowerCase())
         return {
+            id: result?._id,
             name: result?.name,
             stateId: result?.stateId
         }
@@ -53,9 +54,28 @@ const findByName = async (nameCity: string) =>{
     }
 }
 
+const findByCityByStates = async (idStade: string)=>{
+
+    try {
+        if(!idStade) throw new Error('This states ID not exist')
+        
+        const stateAlreadyExist = stateRepository.findByID(parseInt(idStade))
+        if(!stateAlreadyExist.id) throw 'This State ID not exist!'
+
+        return await cityRepository.findByCityByStates(idStade)
+
+    } catch (error) {
+
+        throw error
+    }
+
+
+}
+
 
 export const cityUseCase = {
     createCity,
-    findByName
+    findByName,
+    findByCityByStates
 }
 

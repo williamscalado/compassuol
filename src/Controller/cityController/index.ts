@@ -56,7 +56,25 @@ const findByName = async (req: Request, res: Response) => {
 
 }
 
+const findByCityByStates = async (req: Request, res: Response) => {
 
+    
+    try {
+        const stateId = req.params.id
+
+        if(!stateId) throw 'This ID not exist'
+        const resultbyStates = await cityUseCase.findByCityByStates(stateId)
+
+        res.status(200).json(resultbyStates)
+    } catch (error) {
+        res.status(400).json({
+            error: true,
+            message: error
+        })
+    }
+
+
+}
 
 
 
@@ -64,5 +82,6 @@ const findByName = async (req: Request, res: Response) => {
 export const cityController = {
 
     createCity,
-    findByName
+    findByName,
+    findByCityByStates
 }
