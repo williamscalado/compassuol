@@ -1,3 +1,4 @@
+import { StateError } from "../StateError"
 
 const statesMock = [
     {
@@ -277,7 +278,7 @@ const findByID = (idState: number)=>{
 
 
   try {
-    if(!idState) throw new Error('This ID state not valid!')
+    if(!idState) throw ('This ID state not valid!')
     const resultState =  statesMock.find(state => state.id === idState )
     return {
       id: resultState?.id,
@@ -287,7 +288,7 @@ const findByID = (idState: number)=>{
 
   } catch (error) {
 
-    throw error
+    throw new StateError(error as string)  
   }
     
 
@@ -309,7 +310,7 @@ const findBySigla = (siglaState: string)=>{
 
   } catch (error) {
     
-    throw error
+    throw new StateError(error as string) 
   }
     
 

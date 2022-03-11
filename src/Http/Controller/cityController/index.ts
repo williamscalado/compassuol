@@ -2,7 +2,7 @@ import { Request, response, Response } from "express";
 import { cityUseCase } from "../../../modules/city/cityUseCase";
 import { cityValidationData } from "../../../modules/city/cityValidation";
 import { ICity } from "../../../Domain/city";
-import { ClientError } from "../../../modules/client/clientError";
+import { CityError } from "../../../modules/city/CityError";
 
 const createCity = async (req: Request, res: Response) => {
 
@@ -14,7 +14,7 @@ const createCity = async (req: Request, res: Response) => {
             active: true
         }
 
-        if (!data) throw 'Data is not valid!'
+        if (!data) throw new CityError('Data does not is valid!')
 
         await cityValidationData.validate(data)
         await cityUseCase.createCity(data)
@@ -24,7 +24,7 @@ const createCity = async (req: Request, res: Response) => {
             message: "City create!"
         })
 
-    } catch (error){
+    } catch (error){        
         res.status(400).json(error)
     }
 }
@@ -35,19 +35,14 @@ const findByName = async (req: Request, res: Response) => {
 
         const nameCity = req.params.name
 
-        if (nameCity == "" || null || undefined) throw 'Name invalid'
+        if (nameCity == "" || null || undefined) throw new CityError('This name is invalid')
         const resultSeachrCity = await cityUseCase.findByName(nameCity)
 
-        if (!resultSeachrCity.name) throw 'This city not exist!'
+        if (!resultSeachrCity.name) throw new CityError('This city does not is exist!')
         res.status(200).json(resultSeachrCity)
 
     } catch (error) {
-
-        res.status(300).json({
-            error: true,
-            message: error
-        })
-
+        res.status(400).json(error)
     }
 
 
@@ -59,16 +54,13 @@ const findByCityByStates = async (req: Request, res: Response) => {
     try {
         const stateId = req.params.id
 
-        if(!stateId) throw 'This ID not exist'
+        if(!stateId) throw new CityError('This ID does not is exist')
         const resultbyStates = await cityUseCase.findByCityByStates(stateId)
 
         res.status(200).json(resultbyStates)
 
     } catch (error) {
-        res.status(400).json({
-            error: true,
-            message: error
-        })
+        res.status(400).json(error)
     }
 
 

@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
-import { setAppError } from "../Error";
 dotenv.config()
 
 export const connectMongoDb = async () =>{
@@ -12,7 +11,7 @@ export const connectMongoDb = async () =>{
     
     } catch (e) {
 
-        throw new setAppError(500, 'Database Error!')
+        throw new Error('Database Error!')
     }
     
 }

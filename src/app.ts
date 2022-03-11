@@ -1,10 +1,10 @@
-import express , {Request, Response} from 'express'
+import express , {NextFunction, Request, Response} from 'express'
 import dotenv from  'dotenv'
 import { cityRouters } from './Router/city';
 import { clientRouters } from './Router/client';
 import { connectMongoDb } from './Config/database';
 import { statesRouters } from './Router/states';
-import { errorMiddleware } from './Error';
+
 
 connectMongoDb();
 
@@ -19,8 +19,14 @@ app.use(clientRouters)
 
 
 
-app.use(errorMiddleware)
-
+app.use((error: Error, req: Request, res:Response, next: NextFunction)=>{
+    const errorMessage = {
+        error : 'ServerError',
+        message: error.message
+    }
+    res.status(500).json(errorMessage)
+    
+})
 
 app.use('/',(req: Request, res: Response)=>{
     res.status(404).json({

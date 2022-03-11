@@ -2,6 +2,7 @@ import { IClient } from "../../../Domain/client";
 import { clientRepository } from "../clientRepository";
 import crypto from "crypto"
 import { cityRepository } from "../../city/cityRepository";
+import { ClientError } from "../ClientError";
 
 
 const createClinet = async (data: IClient) => {
@@ -25,21 +26,21 @@ const createClinet = async (data: IClient) => {
 
     } catch (error) {
 
-        throw error
+        throw new ClientError((error as string))
     }
 }
 
 const findByName = async (nameClient: string) => {
     try {
 
-        if (!nameClient) throw new Error('this name not valid!')
+        if (!nameClient) throw 'this name not valid!'
         const resultClient = await clientRepository.findByName(nameClient)
         if (!resultClient) throw 'This client not exist!'
 
         return resultClient
 
     } catch (error) {
-        throw error
+        throw new ClientError((error as string))
     }
 
 
@@ -48,14 +49,14 @@ const findByName = async (nameClient: string) => {
 const findById = async (idClient: string) => {
     try {
 
-        if (!idClient) throw new Error('this id not valid!')
+        if (!idClient) throw 'this id not valid!'
         const resultClient = await clientRepository.findById(idClient)
         if (!resultClient) throw 'This client id not exist!'
 
         return resultClient
 
     } catch (error) {
-        throw error
+        throw new ClientError((error as string))
     }
 
 

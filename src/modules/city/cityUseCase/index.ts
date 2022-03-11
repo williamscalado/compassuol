@@ -1,6 +1,6 @@
 import { ICity } from "../../../Domain/city";
-import { ClientError } from "../../client/clientError";
 import { stateRepository } from "../../state/statesRepository";
+import { CityError } from "../CityError";
 import { cityRepository } from "../cityRepository";
 
 const createCity = async (data: ICity) => {
@@ -18,9 +18,9 @@ const createCity = async (data: ICity) => {
         await cityRepository.createCity(data)
 
 
-    } catch (err) {
+    } catch (error) {
 
-        throw  new Error(`${err}`)
+        throw  new CityError((error as string))
         
 
     }
@@ -32,7 +32,7 @@ const findByName = async (nameCity: string) =>{
 
     try {
 
-        if(!nameCity) throw new Error('This name is not valid!')
+        if(!nameCity) throw  'This name is not valid!'
         const result = await cityRepository.findByName(nameCity.toLowerCase())
         return {
             id: result?._id,
@@ -43,7 +43,7 @@ const findByName = async (nameCity: string) =>{
 
     } catch (error) {
 
-        throw error
+        throw  new CityError((error as string))
         
     }
 }
@@ -51,7 +51,7 @@ const findByName = async (nameCity: string) =>{
 const findByCityByStates = async (idStade: string)=>{
 
     try {
-        if(!idStade) throw new Error('This states ID not exist')
+        if(!idStade) throw ('This states ID not exist')
         
         const stateAlreadyExist = stateRepository.findByID(parseInt(idStade))
         if(!stateAlreadyExist.id) throw 'This State ID not exist!'
@@ -60,7 +60,7 @@ const findByCityByStates = async (idStade: string)=>{
 
     } catch (error) {
 
-        throw error
+        throw  new CityError((error as string))
     }
 
 
