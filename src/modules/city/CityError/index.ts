@@ -1,10 +1,8 @@
 export class CityError extends Error {
-    public messageError: string;
     public error
     constructor(message: string) {
-        super(message);
-        
+        super();        
         this.error = 'CityErro';
-        this.messageError = message;
+        this.message = message;
     }
 }

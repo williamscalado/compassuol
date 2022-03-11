@@ -1,10 +1,8 @@
 export class ClientError extends Error {
-    public messageError: string;
     public error
     constructor(message: string) {
-        super(message);
-        
+        super();
         this.error = 'ClientErro';
-        this.messageError = message;
+        this.message = message;
     }
 }

@@ -3,7 +3,7 @@ import { cityUseCase } from "../../../modules/city/cityUseCase";
 import { cityValidationData } from "../../../modules/city/cityValidation";
 import { ICity } from "../../../Domain/city";
 import { CityError } from "../../../modules/city/CityError";
-
+import yup from 'yup'
 const createCity = async (req: Request, res: Response) => {
 
     try {
@@ -24,7 +24,7 @@ const createCity = async (req: Request, res: Response) => {
             message: "City create!"
         })
 
-    } catch (error){        
+    } catch (error) {
         res.status(400).json(error)
     }
 }
@@ -34,11 +34,10 @@ const findByName = async (req: Request, res: Response) => {
     try {
 
         const nameCity = req.params.name
-
-        if (nameCity == "" || null || undefined) throw new CityError('This name is invalid')
         const resultSeachrCity = await cityUseCase.findByName(nameCity)
 
         if (!resultSeachrCity.name) throw new CityError('This city does not is exist!')
+
         res.status(200).json(resultSeachrCity)
 
     } catch (error) {
@@ -50,11 +49,10 @@ const findByName = async (req: Request, res: Response) => {
 
 const findByCityByStates = async (req: Request, res: Response) => {
 
-    
+
     try {
         const stateId = req.params.id
-
-        if(!stateId) throw new CityError('This ID does not is exist')
+        if (!stateId) throw new CityError('This ID does not is exist')
         const resultbyStates = await cityUseCase.findByCityByStates(stateId)
 
         res.status(200).json(resultbyStates)

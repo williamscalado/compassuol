@@ -277,9 +277,11 @@ const statesMock = [
 const findByID = (idState: number)=>{
 
 
-  try {
-    if(!idState) throw ('This ID state not valid!')
-    const resultState =  statesMock.find(state => state.id === idState )
+  try {   
+    const resultState =  statesMock.find(
+      state => state.id === idState 
+      )
+    if(!resultState?.id) throw ('The ID state not valid!')
     return {
       id: resultState?.id,
       name: resultState?.nome,
@@ -295,13 +297,15 @@ const findByID = (idState: number)=>{
 
 }
 
-const findBySigla = (siglaState: string)=>{
+const findByState = (stateAcronym: string)=>{
 
 
   try {
-    
-    if(!siglaState) throw new Error('This ID state not valid!')
-    const resultState =  statesMock.find(state => state.sigla === siglaState )
+        
+    const resultState =  statesMock.find(
+      item => item.sigla === stateAcronym
+      )
+    if(!resultState?.id) throw new StateError('The ID state not valid!')
     return {
       id: resultState?.id,
       name: resultState?.nome,
@@ -325,6 +329,6 @@ const getAllStates = () => {
 
 export const stateRepository = {
   findByID,
-  findBySigla,
+  findByState,
   getAllStates
 }

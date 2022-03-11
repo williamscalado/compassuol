@@ -24,12 +24,12 @@ const findByID = (req: Request, res: Response) => {
 
 }
 
-const findBySigla = (req: Request, res: Response) => {
+const findByState = (req: Request, res: Response) => {
 
   try {
-    const stateSigla = (req.params.sigla).toUpperCase()
-    if (!stateSigla) throw new Error('This Sigla state not valid!')
-    const resultState = stateRepository.findBySigla(stateSigla)
+    const stateAcronym = (req.params.stateAcronym).toUpperCase()
+    if (!stateAcronym) throw new Error('This Sigla state not valid!')
+    const resultState = stateRepository.findByState(stateAcronym)
   
     if(!resultState.id)  throw 'This Sigla not valid!'
     
@@ -55,6 +55,6 @@ const getAllStates = (req: Request, res: Response) => {
 
 export const stateController = {
   findByID,
-  findBySigla,
+  findBySigla: findByState,
   getAllStates
 }
