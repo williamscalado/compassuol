@@ -37,7 +37,7 @@ function haltOnTimedout (req: Request, res: Response, next: NextFunction) {
   }
 
 
-app.use('/',(req: Request, res: Response)=>{
+app.use('/',(res: Response)=>{
     res.status(404).json({
         error: true,
         message: "Page not found!"

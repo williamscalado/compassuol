@@ -76,7 +76,7 @@ const updateClient = async (req: Request, res: Response) => {
             .reverse()
             .join('-')):
 
-        res.status(200).json(
+        res.status(202).json(
             await clientUseCase.updateClient(dataUpdateClient, idClient)
         )
 
