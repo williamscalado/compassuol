@@ -3,7 +3,7 @@ import { cityUseCase } from "../../../modules/city/cityUseCase";
 import { cityValidationData } from "../../../modules/city/cityValidation";
 import { ICity } from "../../../Domain/city";
 import { CityError } from "../../../modules/city/CityError";
-import yup from 'yup'
+
 const createCity = async (req: Request, res: Response) => {
 
     try {
@@ -14,7 +14,7 @@ const createCity = async (req: Request, res: Response) => {
             active: true
         }
 
-        if (!data) throw new CityError('Data does not is valid!')
+        if (!data) throw new CityError('Informations does not is valid!')
 
         await cityValidationData.validate(data)
         await cityUseCase.createCity(data)
@@ -36,7 +36,7 @@ const findByName = async (req: Request, res: Response) => {
         const nameCity = req.params.name
         const resultSeachrCity = await cityUseCase.findByName(nameCity)
 
-        if (!resultSeachrCity.name) throw new CityError('This city does not is exist!')
+        if (!resultSeachrCity.name) throw new CityError('The city does not is exist!')
 
         res.status(200).json(resultSeachrCity)
 

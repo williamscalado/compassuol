@@ -17,7 +17,10 @@ const findByName =  async (nameClient: string) => {
 
 const findById =  async (idClient: string) => {
     return await clientSchemaReopository.findOne({_id: idClient}, ['-password', '-createAt', '-__v' ])
+   
 }
+
+
 
 const updateClient =  async (dataUpdate: IClient, idClient: string) => {
 

@@ -1,4 +1,4 @@
-import express , {NextFunction, Request, Response} from 'express'
+import express , {json, NextFunction, Request, Response} from 'express'
 import dotenv from  'dotenv'
 import timeout from 'connect-timeout'
 import { cityRouters } from './Router/city';
@@ -37,7 +37,7 @@ function haltOnTimedout (req: Request, res: Response, next: NextFunction) {
   }
 
 
-app.use('/',(res: Response)=>{
+app.use('/',(req: Request , res: Response)=>{
     res.status(404).json({
         error: true,
         message: "Page not found!"

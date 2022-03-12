@@ -1,19 +1,15 @@
 import { IClient } from "../../../Domain/client";
 import { clientRepository } from "../clientRepository";
-import crypto from "crypto"
 import { cityRepository } from "../../city/cityRepository";
 import { ClientError } from "../ClientError";
 
 
-const createClinet = async (data: IClient) => {
-
-    try {
+const createClient = async (data: IClient) => {
 
         const clientData = data
-        clientData.password = crypto.createHmac('sha256', clientData.password).digest('hex');
         await cityRepository.findByID(clientData.idCity)
         const emailAlreadyExist = await clientRepository.findByEmail(clientData.email)
-        if (emailAlreadyExist) throw 'This e-mail already exist!'
+        if (emailAlreadyExist) throw new ClientError('This e-mail already exist!')
 
         let { name, lastName, email, _id } = await clientRepository.createClient(clientData);
 
@@ -23,42 +19,23 @@ const createClinet = async (data: IClient) => {
             lastName: lastName,
             email: email
         }
-
-    } catch (error) {
-
-        throw new ClientError((error as string))
-    }
 }
 
 const findByName = async (nameClient: string) => {
-    try {
-
-        if (!nameClient) throw 'this name not valid!'
+   
+        if (!nameClient) throw new ClientError('this name not valid!')
         const resultClient = await clientRepository.findByName(nameClient)
-        if (!resultClient) throw 'This client not exist!'
+        if (!resultClient) throw new ClientError('This client not exist!')
 
         return resultClient
-
-    } catch (error) {
-        throw new ClientError((error as string))
-    }
-
-
 }
 
 const findById = async (idClient: string) => {
-    try {
-
-
+   
         const resultClient = await clientRepository.findById(idClient)
-        if (!resultClient) throw 'This client id not exist!'
+        if (!resultClient) new ClientError('This client id not exist!')
 
         return resultClient
-
-    } catch (error) {
-        throw new ClientError((error as string))
-    }
-
 
 }
 
@@ -82,21 +59,15 @@ const updateClient = async (data: IClient, idClient: string) => {
 
 const deleteClient = async (idClient: string) => {
 
-    try {
-        const resultClient = await clientRepository.findById(idClient)
-        if (!resultClient) throw 'This client id not exist!'
+        const findByClinet = await clientUseCase.findById(idClient)
+        if (!findByClinet) throw new ClientError('The clinet ID does not exirt!')
 
         await clientRepository.deleteClient(idClient)
-
-    } catch (error) {
-        throw new ClientError((error as string))
-    }
-
 }
 
 
 export const clientUseCase = {
-    createClinet,
+    createClient,
     findByName,
     findById,
     updateClient,

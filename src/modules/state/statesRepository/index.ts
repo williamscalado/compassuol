@@ -274,50 +274,30 @@ const statesMock = [
   ]
 
 
-const findByID = (idState: number)=>{
-
-
-  try {   
+const findByID = (idState: number)=>{ 
     const resultState =  statesMock.find(
       state => state.id === idState 
       )
-    if(!resultState?.id) throw ('The ID state not valid!')
-    return {
-      id: resultState?.id,
-      name: resultState?.nome,
-      sigla: resultState?.sigla
-    }
-
-  } catch (error) {
-
-    throw new StateError(error as string)  
-  }
     
-
-
-}
-
-const findByState = (stateAcronym: string)=>{
-
-
-  try {
-        
-    const resultState =  statesMock.find(
-      item => item.sigla === stateAcronym
-      )
     if(!resultState?.id) throw new StateError('The ID state not valid!')
     return {
       id: resultState?.id,
       name: resultState?.nome,
       sigla: resultState?.sigla
     }
+}
 
-  } catch (error) {
-    
-    throw new StateError(error as string) 
-  }
-    
-
+const findByState = (stateAcronym: string)=>{
+     
+    const resultState =  statesMock.find(
+      item => item.sigla === stateAcronym
+      )
+    if(!resultState?.id) throw new StateError('The state not valid!')
+    return {
+      id: resultState?.id,
+      name: resultState?.nome,
+      sigla: resultState?.sigla
+    }
 
 }
 

@@ -5,10 +5,10 @@ export interface IClient{
     name: string,
     lastName: string,
     gender: string,
-    birthdayDate: number,
+    birthdayDate: string,
     email: string,
     password: string,
     age?: string,
     idCity: string,
-    createAt?: number
+    createAt?: string
 }

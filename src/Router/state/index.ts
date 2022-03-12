@@ -5,6 +5,6 @@ const statesRouters = Router();
 
 statesRouters.get('/states', stateController.getAllStates)
 statesRouters.get('/states/id/:id', stateController.findByID)
-statesRouters.get('/states/stateAcronym/:stateAcronym', stateController.findBySigla)
+statesRouters.get('/states/stateAcronym/:stateAcronym', stateController.findByState)
 
 export { statesRouters }
