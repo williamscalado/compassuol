@@ -10,3 +10,4 @@ export const clientDataValidation = yup.object().shape({
     age: yup.string(),
     idCity: yup.string().required()
 })
+

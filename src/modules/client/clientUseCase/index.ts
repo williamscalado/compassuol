@@ -15,7 +15,7 @@ const createClinet = async (data: IClient) => {
         const emailAlreadyExist = await clientRepository.findByEmail(clientData.email)
         if (emailAlreadyExist) throw 'This e-mail already exist!'
 
-        let { name, lastName, email, _id } = await clientRepository.createClinet(clientData);
+        let { name, lastName, email, _id } = await clientRepository.createClient(clientData);
 
         return {
             id: _id,
@@ -49,7 +49,7 @@ const findByName = async (nameClient: string) => {
 const findById = async (idClient: string) => {
     try {
 
-        if (!idClient) throw 'this id not valid!'
+
         const resultClient = await clientRepository.findById(idClient)
         if (!resultClient) throw 'This client id not exist!'
 
@@ -62,9 +62,43 @@ const findById = async (idClient: string) => {
 
 }
 
+const updateClient = async (data: IClient, idClient: string) => {
+       
+        const clientData = data
+        await cityRepository.findByID(clientData.idCity)
+
+        const findClientById = await clientRepository.findById(idClient)
+        if(!findClientById) throw new ClientError('The client does not exist!')
+
+        if(findClientById.email !== clientData.email){
+            const emailAlreadyExist = await clientRepository.findByEmail(clientData.email)
+            if(emailAlreadyExist) throw new ClientError('This e-mail is already in use!')
+        }
+
+        await clientRepository.updateClient(clientData, idClient)
+
+
+}
+
+const deleteClient = async (idClient: string) => {
+
+    try {
+        const resultClient = await clientRepository.findById(idClient)
+        if (!resultClient) throw 'This client id not exist!'
+
+        await clientRepository.deleteClient(idClient)
+
+    } catch (error) {
+        throw new ClientError((error as string))
+    }
+
+}
+
 
 export const clientUseCase = {
     createClinet,
     findByName,
-    findById
+    findById,
+    updateClient,
+    deleteClient
 }
