@@ -14,7 +14,7 @@ const findByEmail = async (email: string) => {
 
 
 const findByName = async (nameClient: string) => {
-    return await clientSchemaReopository.findOne({
+    return await clientSchemaReopository.find({
         name: nameClient
     },
         ['-password', '-createAt', '-__v']

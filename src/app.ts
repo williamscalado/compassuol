@@ -32,7 +32,6 @@ app.use((error: Error, req: Request, res:Response, next: NextFunction)=>{
 })
 
 function haltOnTimedout (req: Request, res: Response, next: NextFunction) {
-    req.setMaxListeners(10)
     if (!req.timedout) next()
   }
 
