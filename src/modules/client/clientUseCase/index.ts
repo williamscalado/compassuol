@@ -23,7 +23,6 @@ const createClient = async (data: IClient) => {
 
 const findByName = async (nameClient: string) => {
    
-        if (!nameClient) throw new ClientError('this name not valid!')
         const resultClient = await clientRepository.findByName(nameClient)
         if (!resultClient) throw new ClientError('This client not exist!')
 

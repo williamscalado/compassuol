@@ -6,34 +6,48 @@ const createClient = async (data: IClient) => {
 }
 
 
-const findByEmail =  async (email: string) => {
-    return await clientSchemaReopository.findOne({email: email})
+const findByEmail = async (email: string) => {
+    return await clientSchemaReopository.findOne({
+        email: email
+    })
 }
 
 
-const findByName =  async (nameClient: string) => {
-    return await clientSchemaReopository.findOne({name: nameClient}, ['-password', '-createAt', '-__v' ])
+const findByName = async (nameClient: string) => {
+    return await clientSchemaReopository.findOne({
+        name: nameClient
+    },
+        ['-password', '-createAt', '-__v']
+    )
 }
 
-const findById =  async (idClient: string) => {
-    return await clientSchemaReopository.findOne({_id: idClient}, ['-password', '-createAt', '-__v' ])
-   
+const findById = async (idClient: string) => {
+    return await clientSchemaReopository.findOne({
+        _id: idClient
+    },
+        ['-password', '-createAt', '-__v']
+    )
+
 }
 
 
 
-const updateClient =  async (dataUpdate: IClient, idClient: string) => {
+const updateClient = async (dataUpdate: IClient, idClient: string) => {
 
-    return await clientSchemaReopository.findByIdAndUpdate(
-        {_id: idClient},
-        dataUpdate,
-        {rawResult: true}
-        );
+    return await clientSchemaReopository.findByIdAndUpdate({
+        _id: idClient
+    },
+        dataUpdate
+        , { rawResult: true }
+    );
 }
 
-const deleteClient = async (idClient: string)=>{
+const deleteClient = async (idClient: string) => {
 
-    return await clientSchemaReopository.deleteOne({_id: idClient})
+    return await clientSchemaReopository.deleteOne({
+        _id: idClient
+    }
+    )
 
 }
 export const clientRepository = {

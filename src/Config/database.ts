@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { ClientError } from "../modules/client/ClientError";
 export const connectMongoDb = async () =>{
 
     try {

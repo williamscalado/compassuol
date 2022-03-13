@@ -14,7 +14,7 @@ const createCity = async (req: Request, res: Response) => {
             active: true
         }
 
-        if (!data) throw new CityError('Informations does not is valid!')
+        if (!data) throw new CityError('Information does not is valid!')
 
         await cityValidationData.validate(data)
         await cityUseCase.createCity(data)

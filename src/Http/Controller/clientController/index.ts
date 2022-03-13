@@ -15,7 +15,12 @@ const createClient = async (req: Request, res: Response) => {
         const clientData = req.body
         await clientDataValidation.validate(clientData)
 
-        clientData.birthdayDate = new Date(clientData.birthdayDate.split('/').reverse().join('-'))
+        clientData.birthdayDate = new Date(
+            clientData.birthdayDate
+                .split('/')
+                .reverse()
+                .join('-')
+        )
         clientData.password = cryptoPassword(clientData.password);
         clientData.createAt = new Date()
 
@@ -55,7 +60,7 @@ const findById = async (req: Request, res: Response) => {
 const deleteClient = async (req: Request, res: Response) => {
     try {
         const idClient = req.params.id
-        
+
         await clientUseCase.deleteClient(idClient)
 
         res.status(202).json()
@@ -75,9 +80,9 @@ const updateClient = async (req: Request, res: Response) => {
 
         dataUpdateClient.birthdayDate = new Date(
             dataUpdateClient.birthdayDate
-            .split('/')
-            .reverse()
-            .join('-')
+                .split('/')
+                .reverse()
+                .join('-')
         );
 
         dataUpdateClient.password = cryptoPassword(dataUpdateClient.password)

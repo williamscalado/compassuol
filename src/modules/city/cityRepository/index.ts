@@ -7,17 +7,25 @@ const createCity = async (data: ICity) => {
 }
 
 const findByName = async (name: string, idStade?: string) => {
-    return await citySchemaRepository.findOne({ name: name, stateId: (idStade) ? idStade : /.*/ })
+    return await citySchemaRepository.findOne({ 
+        name: name, 
+    stateId: (idStade) ? idStade : /.*/ })
 }
 
 
 const findByID = async (idCity?: string) => {
-    return await citySchemaRepository.findOne({ _id: idCity })
+    return await citySchemaRepository.findOne({ 
+        _id: idCity 
+    })
 }
 
 
 const findByCityByStates = async (idStade: string) => {
-    return await citySchemaRepository.find({ stateId: idStade }, ['-__v', '-createAt', '-active'])
+    return await citySchemaRepository.find({ 
+        stateId: idStade 
+    }, 
+        ['-__v', '-createAt', '-active']
+    )
 }
 
 
