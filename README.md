@@ -155,7 +155,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 | --------- | -------- | ------------------------- |
 | `name`       | `string` | **Required**  |
 | `lastName`       | `string` | **Required**  |
-| `gender`       | `string` | **Required**  |
+| `gender`       | `string` | **Required** Value: male or female  |
 | `birthdayDate`       | `string` | **Required**  |
 | `email`       | `string` | **Required** **Unique**  |
 | `password`       | `string` | **Required**  |
