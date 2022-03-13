@@ -38,13 +38,14 @@ function haltOnTimedout (req: Request, res: Response, next: NextFunction) {
 
 app.use('/',(req: Request , res: Response)=>{
     res.status(404).json({
-        error: true,
+        error: 404,
         message: "Page not found!"
     })
 })
 
 
 
-app.listen(process.env.PORT || 3000) 
-
+app.listen(process.env.PORT || 3000,()=>{
+    console.log(`App listening on port: ${process.env.PORT || 3000}`)
+}) 
 
