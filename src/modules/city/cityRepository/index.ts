@@ -1,5 +1,5 @@
 import { citySchemaRepository } from "./schema"
-import { ICity } from "../../../Domain/city";
+import { ICity, ICityRepository } from "../../../Domain/city";
 
 const createCity = async (data: ICity) => {
 
@@ -7,13 +7,16 @@ const createCity = async (data: ICity) => {
 }
 
 const findByName = async (name: string, idStade?: string) => {
-    return await citySchemaRepository.findOne({ 
+     
+    const result = await citySchemaRepository.findOne({ 
         name: name, 
     stateId: (idStade) ? idStade : /.*/ })
+
+    return result
 }
 
 
-const findByID = async (idCity?: string) => {
+const findByID = async (idCity: string) => {
     return await citySchemaRepository.findOne({ 
         _id: idCity 
     })
@@ -31,7 +34,7 @@ const findByCityByStates = async (idStade: string) => {
 
 
 
-export const cityRepository = {
+export const cityRepository: ICityRepository = {
     createCity,
     findByName,
     findByCityByStates,

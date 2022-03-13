@@ -1,4 +1,4 @@
-const yup = require("yup")
+import * as yup from 'yup'
 
 export const clientDataValidation = yup.object().shape({
     name: yup.string().required().min(3),

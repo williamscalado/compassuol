@@ -36,7 +36,7 @@ const findByName = async (req: Request, res: Response) => {
         const nameCity = req.params.name
         const resultSeachrCity = await cityUseCase.findByName(nameCity)
 
-        if (!resultSeachrCity.name) throw new CityError('The city does not is exist!')
+        if (!resultSeachrCity?.name) throw new CityError('The city does not is exist!')
 
         res.status(200).json(resultSeachrCity)
 

@@ -4,7 +4,7 @@ export class StateError extends Error {
     constructor(message: string) {
         super(message);
         
-        this.error = 'StateErro';
+        this.error = 'StateError';
         this.messageError = message;
     }
 }
