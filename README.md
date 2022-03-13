@@ -129,6 +129,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 		"name": "recife",
 		"stateId": "26"
 	}
+	...
 ]
 ```
 - Consultar cidade pelo nome<br>
@@ -256,10 +257,10 @@ yarn dev
 
 ## 🛠️ O que foi usado!
 Usei as seguintes ferramentas e tecnologias
-* [VS Code](#) 
+* [VScode](#) 
 * [NodeJS](#) 
 * [TypeScript](#)
-* [MongoDB](#) 
+* [MongoDB] Atlas(#) 
 * [Insomnia](#) 
 
 
