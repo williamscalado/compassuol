@@ -36,7 +36,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ---
 - Mostar todos os Estados<br>
 `GET /states/`
-### Response Array
+### Response 
 ```
 [
 	{
@@ -104,7 +104,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 | `name`       | `string` | **Required**  |
 | `stateId`    | `string` | **Required**  |
 
-### Estrutura
+### Payload
 ```
 {
     "name": "Recife",
@@ -118,7 +118,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 | --------- | -------- | ------------------------- |
 | `id`       | `number` | **Required** Search query |
 
-### Response Array
+### Response 
 ```
 [
 	{
@@ -154,7 +154,9 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ---
 - Cadastrar Cliente<br>
   `POST /client/`
-### Estrutura JSON
+  
+### Payload
+
 | Parameter | Type     | Description               |
 | --------- | -------- | ------------------------- |
 | `name`       | `string` | **Required**  |
@@ -185,7 +187,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 | --------- | -------- | ------------------------- |
 | `name`       | `string` | **Required** Search query |
 
-### Response Array
+### Response 
 ```
 [
 	{
