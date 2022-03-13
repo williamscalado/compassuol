@@ -1,4 +1,4 @@
-import { StateError } from "../StateError"
+import { StateError } from "../stateError"
 import { IState, statesMock } from "./stateMock"
 
 

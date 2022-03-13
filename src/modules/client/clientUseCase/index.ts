@@ -1,7 +1,7 @@
-import { IClient } from "../../../Domain/client";
+import { IClient, IClientUseCase } from "../../../Domain/client";
 import { clientRepository } from "../clientRepository";
 import { cityRepository } from "../../city/cityRepository";
-import { ClientError } from "../ClientError";
+import { ClientError } from "../clientError";
 
 
 const createClient = async (data: IClient) => {
@@ -65,7 +65,7 @@ const deleteClient = async (idClient: string) => {
 }
 
 
-export const clientUseCase = {
+export const clientUseCase: IClientUseCase = {
     createClient,
     findByName,
     findById,

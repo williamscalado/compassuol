@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { StateError } from "../../../modules/state/StateError"
+import { StateError } from "../../../modules/state/stateError"
 import { stateRepository } from "../../../modules/state/statesRepository"
 
 const findByID = (req: Request, res: Response) => {

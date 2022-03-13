@@ -2,7 +2,7 @@ import { Request, response, Response } from "express";
 import { cityUseCase } from "../../../modules/city/cityUseCase";
 import { cityValidationData } from "../../../modules/city/cityValidation";
 import { ICity } from "../../../Domain/city";
-import { CityError } from "../../../modules/city/CityError";
+import { CityError } from "../../../modules/city/cityError";
 
 const createCity = async (req: Request, res: Response) => {
 

@@ -1,6 +1,6 @@
 import { ICity, ICityUseCase } from "../../../Domain/city";
 import { stateRepository } from "../../state/statesRepository";
-import { CityError } from "../CityError";
+import { CityError } from "../cityError";
 import { cityRepository } from "../cityRepository";
 
 const createCity = async (data: ICity) => {

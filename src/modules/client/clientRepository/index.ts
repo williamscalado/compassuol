@@ -1,5 +1,5 @@
 import { clientSchemaReopository } from "./schema";
-import { IClient } from "../../../Domain/client";
+import { IClient, IClientRepository } from "../../../Domain/client";
 
 const createClient = async (data: IClient) => {
     return (await clientSchemaReopository.create(data)).save();
@@ -50,7 +50,7 @@ const deleteClient = async (idClient: string) => {
     )
 
 }
-export const clientRepository = {
+export const clientRepository: IClientRepository = {
     createClient,
     findByEmail,
     findByName,

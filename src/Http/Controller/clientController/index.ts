@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { clientUseCase } from "../../../modules/client/clientUseCase";
 import { clientDataValidation } from "../../../modules/client/clientValidation";
-import { ClientError } from "../../../modules/client/ClientError";
 import crypto from "crypto"
 
 function cryptoPassword(password: string) {

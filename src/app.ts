@@ -1,4 +1,4 @@
-import express , {json, NextFunction, Request, Response} from 'express'
+import express , {NextFunction, Request, Response} from 'express'
 import dotenv from  'dotenv'
 import timeout from 'connect-timeout'
 import { cityRouters } from './Router/city';

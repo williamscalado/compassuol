@@ -1,6 +1,4 @@
-import { string } from "yup"
-
-export interface IClient{
+export interface IClient {
     _id?: string,
     name: string,
     lastName: string,
@@ -11,4 +9,21 @@ export interface IClient{
     age?: string,
     idCity: string,
     createAt?: string
+}
+
+export interface IClientUseCase {
+    createClient(data: IClient): any,
+    findByName(nameClient: string): any | Promise<IClient>,
+    findById(idClient: string): any | Promise<IClient>,
+    updateClient(data: IClient, idClient: string): void,
+    deleteClient(idClient: string): void
+}
+
+export interface IClientRepository {
+    createClient(data: IClient): any,
+    findByEmail(email: string): any | Promise<IClient>,
+    findByName(nameClient: string) : any | Promise<IClient>,
+    findById(idClient: string): any | Promise<IClient>,
+    updateClient(data: IClient, idClient: string): void,
+    deleteClient(idClient: string): void
 }
