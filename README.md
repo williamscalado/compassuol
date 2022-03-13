@@ -257,11 +257,11 @@ yarn dev
 
 ## 🛠️ O que foi usado!
 Usei as seguintes ferramentas e tecnologias
-* [VScode](#) 
-* [NodeJS](#) 
-* [TypeScript](#)
-* [MongoDB] Atlas(#) 
-* [Insomnia](#) 
+* [VScode] 
+* [NodeJS]
+* [TypeScript]
+* [MongoDB Atlas] 
+* [Insomnia]
 
 
 ---
