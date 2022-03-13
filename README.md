@@ -33,6 +33,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 
 
 ### Estado
+---
 - Mostar todos os Estados<br>
 `GET /states/`
 ### Response Array
@@ -94,6 +95,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 
 
 ### Cidade
+---
 - Cadastrar cidade<br>
 `POST /city/`
 
@@ -149,6 +151,7 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ```
 
 ### Cliente
+---
 - Cadastrar Cliente<br>
   `POST /client/`
 ### Estrutura JSON
