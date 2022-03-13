@@ -1,7 +1,7 @@
 import { citySchemaRepository } from "./schema"
 import { ICity, ICityRepository } from "../../../Domain/city";
 
-const createCity = async (data: ICity) => {
+const createCity = async (data: ICity<null>) => {
 
     return await citySchemaRepository.create(data);
 }
