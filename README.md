@@ -1,6 +1,7 @@
 # Desafio compassuol
 
-Neste desafio foi solicitado desenvolver uma API 
+Neste desafio foi solicitado desenvolver uma API <br>
+Arquivo .env não foi adicionado os .gitignore devido a necessidade da realização do teste onde o banco está em cloud MongoDB Atlas Database
 
 
 ### 📋 Pré-requisitos
