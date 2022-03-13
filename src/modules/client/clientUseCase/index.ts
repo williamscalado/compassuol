@@ -59,7 +59,7 @@ const updateClient = async (data: IClient, idClient: string) => {
 const deleteClient = async (idClient: string) => {
 
         const findByClinet = await clientUseCase.findById(idClient)
-        if (!findByClinet) throw new ClientError('The clinet ID does not exirt!')
+        if (!findByClinet) throw new ClientError('The clinet ID does not exist!')
 
         await clientRepository.deleteClient(idClient)
 }
