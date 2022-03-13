@@ -32,30 +32,99 @@ Realizei algumas adições no projeto em relação ao constrole dos Estados para
 
 ### Estado
 - Mostar todos os Estados<br>
-`/states/`
+`GET /states/`
+### Response Array
+
+```
+[
+	{
+		"id": 11,
+		"sigla": "RO",
+		"nome": "Rondônia",
+		"regiao": {
+			"id": 1,
+			"sigla": "N",
+			"nome": "Norte"
+		}
+	},
+	{
+		"id": 12,
+		"sigla": "AC",
+		"nome": "Acre",
+		"regiao": {
+			"id": 1,
+			"sigla": "N",
+			"nome": "Norte"
+		}
+	}
+  ...
+```
 - consultar Estado pelo ID<br>
-`/states/id/16`
+`GET /states/id/16`
+### Response
+
+```
+{
+	"id": 16,
+	"name": "Amapá",
+	"sigla": "AP"
+}
+```
 - consultar Estado por sua sigla<br>
-`/states/stateAcronym/PB`
+`GET /states/stateAcronym/PB`
+### Response
+
+```
+{
+	"id": 25,
+	"name": "Paraíba",
+	"sigla": "PB"
+}
+```
+
 
 
 ### Cidade
 - Cadastrar cidade<br>
+`POST /city/`
+### Response
 
-* Method: POST
 ```
-Return
 {
     "name": "Recife",
     "stateId": "26"
 }
+```
+- Consultar cidades pelo estado<br>
+`GET /city/state/26`
+### Response Array
 
-`/city/`
+```
+[
+	{
+		"_id": "6229f522890a14a759180a62",
+		"name": "abreu e lima",
+		"stateId": "26"
+	},
+	{
+		"_id": "6229f52a890a14a759180a65",
+		"name": "recife",
+		"stateId": "26"
+	}
+]
+```
+- Consultar cidade pelo nome<br>
+  `GET /city/name/recife`
+### Response 
 
-- Consultar cidade pelo estado
-- Consultar cliente pelo nome
-- Consultar cliente pelo Id
- 
+```
+{
+	"id": "6229f52a890a14a759180a65",
+	"name": "recife",
+	"stateId": "26"
+}
+```
+
 ### Cliente
 - Cadastrar Cliente
 - Consultar cliente pelo nome
