@@ -30,6 +30,8 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 
 ## 📦 Endpoints de aplicação
 
+
+
 ### Estado
 - Mostar todos os Estados<br>
 `GET /states/`
@@ -60,6 +62,11 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ```
 - consultar Estado pelo ID<br>
 `GET /states/id/16`
+
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `id`       | `number` | **Required** Search query |
+
 ### Response
 ```
 {
@@ -70,6 +77,11 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ```
 - consultar Estado por sua sigla<br>
 `GET /states/stateAcronym/PB`
+
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `Acronym`       | `string` | **Required** Search query |
+
 ### Response
 ```
 {
@@ -84,6 +96,12 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ### Cidade
 - Cadastrar cidade<br>
 `POST /city/`
+
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `name`       | `string` | **Required**  |
+| `stateId`    | `string` | **Required**  |
+
 ### Estrutura
 ```
 {
@@ -93,6 +111,11 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ```
 - Consultar cidades pelo estado<br>
 `GET /city/state/26`
+
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `id`       | `number` | **Required** Search query |
+
 ### Response Array
 ```
 [
@@ -110,6 +133,11 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ```
 - Consultar cidade pelo nome<br>
   `GET /city/name/recife`
+  
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `name`       | `string` | **Required** Search query |
+
 ### Response 
 ```
 {
@@ -123,6 +151,16 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 - Cadastrar Cliente<br>
   `POST /client/`
 ### Estrutura JSON
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `name`       | `string` | **Required**  |
+| `lastName`       | `string` | **Required**  |
+| `gender`       | `string` | **Required**  |
+| `birthdayDate`       | `string` | **Required**  |
+| `email`       | `string` | **Required** **Unique**  |
+| `password`       | `string` | **Required**  |
+| `idCity`       | `string` | **Required** Search in `GET /city/name/namecity`  |
+
 ```
 {
 	
@@ -138,6 +176,11 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ```
 - Consultar cliente pelo nome<br>
   `GET /client/name/joão`
+  
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `name`       | `string` | **Required** Search query |
+
 ### Response Array
 ```
 [
@@ -154,6 +197,11 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 ```
 - Consultar cliente pelo Id<br>
   `GET /client/622d46af2972e6752865f6b3`
+  
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `id`       | `string` | **Required** Search query |
+
 ### Response 
 ```
 {
@@ -169,8 +217,16 @@ Realizei algumas adições no projeto em relação ao controle dos Estados para 
 - Remover cliente<br>
 `DELETE /client/622d46af2972e6752865f6b3`
 
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `id`       | `string` | **Required**  |
+
 - Alterar o nome do cliente<br>
 `PATCH /client/622d46af2972e6752865f6b3`
+
+| Parameter | Type     | Description               |
+| --------- | -------- | ------------------------- |
+| `id`       | `string` | **Required**  |
 ### Estrutura JSON
 ```
 {
