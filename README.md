@@ -199,7 +199,7 @@ yarn dev
 ```
 
 ## 🛠️ O que foi usado!
-Usei as seguintes ferramentas e tecnolôgias
+Usei as seguintes ferramentas e tecnologias
 * [VS Code](#) 
 * [NodeJS](#) 
 * [TypeScript](#)
