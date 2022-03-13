@@ -1,4 +1,4 @@
-# Desafio compassUol
+# Desafio compassuol
 
 Neste desafio foi solicitado desenvolver uma API 
 
@@ -40,7 +40,18 @@ Realizei algumas adições no projeto em relação ao constrole dos Estados para
 
 
 ### Cidade
-- Cadastrar cidade
+- Cadastrar cidade<br>
+
+* Method: POST
+```
+Return
+{
+    "name": "Recife",
+    "stateId": "26"
+}
+
+`/city/`
+
 - Consultar cidade pelo estado
 - Consultar cliente pelo nome
 - Consultar cliente pelo Id
@@ -72,17 +83,13 @@ E logo após é só rodar a aplicação:
 yarn dev
 ```
 
-## 🛠️ Construído com
+## 🛠️ O que foi usado!
 Usei as seguintes ferramentas e tecnolôgias
 * [VS Code](#) 
 * [NodeJS](#) 
 * [TypeScript](#)
 * [MongoDB](#) 
 * [Insomnia](#) 
-
-
-
-
 
 
 ---
