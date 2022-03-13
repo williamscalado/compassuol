@@ -1,9 +1,4 @@
-type IsRequired<T> =
-  undefined extends T
-  ? false
-  : true;
-
-export interface ICity<T>{
+export interface ICity{
     _id?: string,
     name: string,
     stateId: string,
@@ -13,14 +8,14 @@ export interface ICity<T>{
 
 
 export interface ICityRepository {
-    createCity(data: ICity<null>): Promise<ICity<null>>,
-    findByName(name: string, idStade?: string):  Promise<ICity<null>>,
+    createCity(data: ICity): any | Promise<ICity>,
+    findByName(name: string, idStade?: string):any |  Promise<ICity>,
     findByCityByStates(idState: string): any,
-    findByID(idCity: string): Promise<ICity<null>> ,
+    findByID(idCity: string): any | Promise<ICity> ,
 }
 
 export interface ICityUseCase {
-    createCity(data: ICity<null>): void,
-    findByName(nameCity: string):  Promise<ICity<null>>,
-    findByCityByStates(idStade: string):  Promise<ICity<null>>
+    createCity(data: ICity): void,
+    findByName(nameCity: string): any | Promise<ICity>,
+    findByCityByStates(idStade: string): any | Promise<ICity>
 }
