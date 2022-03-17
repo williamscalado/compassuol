@@ -23,6 +23,7 @@ app.use(clientRouters)
 
 
 app.use((error: Error, req: Request, res:Response, next: NextFunction)=>{
+    
     const errorMessage = {
         error : 'ServerError',
         message: error.message
