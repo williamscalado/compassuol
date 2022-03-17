@@ -27,3 +27,7 @@ export interface IClientRepository {
     updateClient(data: IClient, idClient: string): void,
     deleteClient(idClient: string): void
 }
+
+export interface IClientRepositoryNew {
+    updatetest(id: string): void
+}
