@@ -16,7 +16,7 @@ services:
    
 
   mongodb:
-    container_name: ${SEREVRMONGO}
+    container_name: ${MONGOSEVER}
     image: mongo
     ports:
       - "27017:27017"

@@ -5,7 +5,7 @@ export const connectMongoDb = async () =>{
 
         const userMONGO = process.env.USERMONGO
         const passwordMONGO = process.env.PASSWORDMONGO
-        const serverMONGO = process.env.SEREVRMONGO
+        const serverMONGO = process.env.MONGOSEVER
 
         return await  mongoose.connect(`mongodb://${userMONGO}:${passwordMONGO}@${serverMONGO}`)
         .then(result => {
