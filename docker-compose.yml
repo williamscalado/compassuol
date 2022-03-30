@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  application:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    ports: 
+      - ${PORT}:${PORT}
+    volumes:
+      - ./:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - mongodb
+   
+
+  mongodb:
+    container_name: ${SEREVRMONGO}
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${USERMONGO}
+      - MONGO_INITDB_ROOT_PASSWORD=${PASSWORDMONGO}
+      - MONGO_INITDB_DATABASE=${DATABASEMONGO}
+    volumes:
+      - ./data:/data/db

@@ -40,7 +40,7 @@ function haltOnTimedout (req: Request, res: Response, next: NextFunction) {
 app.use('/',(req: Request , res: Response)=>{
     res.status(404).json({
         error: 404,
-        message: "Page not found!"
+        message: "Page not founds!"
     })
 })
 

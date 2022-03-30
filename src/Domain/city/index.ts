@@ -7,6 +7,8 @@ export interface ICity{
 }
 
 
+
+
 export interface ICityRepository {
     createCity(data: ICity): any | Promise<ICity>,
     findByName(name: string, idStade?: string):any |  Promise<ICity>,

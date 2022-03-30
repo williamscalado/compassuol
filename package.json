@@ -12,7 +12,8 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "dev": "yarn ts-node-dev --respawn --ignore-watch node_modules src/app.ts"
+    "dev": "yarn ts-node-dev --respawn --ignore-watch node_modules src/app.ts",
+    "dev-reload": "yarn nodemon src/app.ts"
   },
   "devDependencies": {
     "@types/connect-timeout": "^0.0.36",
@@ -21,6 +22,7 @@
     "@types/mongoose": "^5.11.97",
     "@types/typescript": "^2.0.0",
     "@types/yup": "^0.29.13",
+    "nodemon": "^2.0.15",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.2"
   }
