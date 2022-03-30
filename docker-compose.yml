@@ -16,7 +16,7 @@ services:
    
 
   mongodb:
-    container_name: ${MONGOSEVER}
+    container_name: ${MONGOSERVER}
     image: mongo
     ports:
       - "27017:27017"
